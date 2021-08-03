@@ -1,0 +1,68 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>Карта представительств</h1>
+				<span>Start Locating</span>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">Главная</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Карта представительств</li>
+				</ol>
+			</div>
+
+		</section><!-- #page-title end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap pt-0">
+
+				<div id="google-map5" style="height: 400px; margin-bottom: 20px;" class="gmap" data-latitude='50.4021368' data-longitude='30.2525063' data-markers='[{latitude: 50.4021368, longitude: 30.2525063, html: "Kyiv, Ukraine"},{latitude: 49.8327787, longitude: 23.9421956,html: "Lviv, Ukraine"}]' data-zoom="6"></div>
+				<div id="faqs" class="faqs container">
+
+						<div class="divider"></div>
+
+						<div class="row col-mb-50">
+							<div class="col-md-6">
+
+								<h4 id="faq-1"> Киев</h4>
+								<p>
+									<address>
+										<strong>Headquarters:</strong><br>
+										795 Folsom Ave, Suite 600<br>
+										San Francisco, CA 94107<br>
+									</address>
+									<abbr title="Phone Number"><strong>Phone:</strong></abbr> (1) 8547 632521<br>
+									<abbr title="Fax"><strong>Fax:</strong></abbr> (1) 11 4752 1433<br>
+									<abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
+								</p>
+
+								
+							</div>
+							<div class='col-md-6'>
+								<h4 id="faq-2"> Львов</h4>
+								<p>
+									<address>
+										<strong>Headquarters:</strong><br>
+										795 Folsom Ave, Suite 600<br>
+										San Francisco, CA 94107<br>
+									</address>
+									<abbr title="Phone Number"><strong>Phone:</strong></abbr> (1) 8547 632521<br>
+									<abbr title="Fax"><strong>Fax:</strong></abbr> (1) 11 4752 1433<br>
+									<abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
+								</p>
+							</div>
+						</div>
+
+					</div>
+			</div>
+		</section><!-- #content end -->
+
+{%endblock%}
+
+{%block scripts%}
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyD3Tkkb6-Pb9cu5D7UTj34jR_8nPXdk2Ec"></script>
+{%endblock%}

@@ -1,0 +1,614 @@
+{%extends 'layout.html'%}
+
+{%block styles%}
+<link rel="stylesheet" href="/static/css/calendar.css" type="text/css" />
+{%endblock%}
+
+{%block content%}
+<style type="text/css">
+	.social_main{
+		position: absolute;
+		bottom: 0;
+		right: 5px;
+	}
+	.mute{
+		z-index: 1000;
+		position: absolute;
+		bottom: 15%;
+		right: 5%;
+		background-color: rgba(0,0,0,0.3);
+		width: 52px;
+		height: 52px;
+		border-radius: 50%
+	}
+	.mute i{
+		line-height: 50px;
+	    width: 100%;
+	    height: 100%;
+	    color: #DDD;
+	    color: rgba(255,255,255,0.8);
+	    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+	    font-size: 34px;
+	    text-align: center;
+	    transition: color .3s ease-in-out;
+	}
+/*.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #535353;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+  border-radius: 0;
+}*/
+
+/* The navigation menu links */
+/*.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}*/
+
+/* When you mouse over the navigation links, change their color */
+/*.sidenav a:hover {
+  color: #f1f1f1;
+}*/
+
+/* Position and style the close button (top right corner) */
+/*.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}*/
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+/*#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+@media (max-width: 450px){
+	.sidenav {width: 13%;}
+	.main {margin-left: 13%;}
+	#header {margin-left: 13%;}
+	#footer {margin-left: 13%;}
+}*/
+/*.heading-block{
+	margin:unset;
+}*/
+
+.section{
+	margin:unset;
+	padding:unset;
+}
+
+@media (min-width: 450px){
+	.gallery-item-1{
+		margin-top:65px;
+	}
+	.gallery-item-2{
+		margin-top:0px;
+	}
+	.gallery-item-3{
+		margin-top:115px;
+	}
+}
+</style>
+<!--
+<div id="mySidenav" class="sidenav">
+	<a href='#' data-scrollto="#slider" class="social-icon si-dark si-facebook w-100">
+		<i class="icon-line-home"></i>
+		<i class="icon-line-home"></i>
+	</a>
+	<a href='#' data-scrollto="#video" class="social-icon si-dark si-facebook w-100">
+		<i class="icon-line-youtube"></i>
+		<i class="icon-line-youtube"></i>
+	</a>
+	<a href='#' data-scrollto="#about" class="social-icon si-dark si-facebook w-100">
+		<i class="icon-question-circle1"></i>
+		<i class="icon-question-circle1"></i>
+	</a>
+	<a href='#' data-scrollto="#event-block" class="social-icon si-dark si-facebook w-100">
+		<i class="icon-line-calendar"></i>
+		<i class="icon-line-calendar"></i>
+	</a>
+	<a href='#' data-scrollto="#gallery-block" class="social-icon si-dark si-facebook w-100">
+		<i class="icon-photo"></i>
+		<i class="icon-photo"></i>
+	</a>
+</div>-->
+
+<div class='main'>
+<script type="text/javascript">
+	function mute(){
+		var vid = document.getElementById("slide-video");
+		if (vid.muted){
+			vid.muted = false;
+			$('#mute-i').removeClass('icon-line2-volume-off')
+			$('#mute-i').addClass('icon-line2-volume-2')
+		}else{
+			vid.muted = true;
+			$('#mute-i').removeClass('icon-line2-volume-2')
+			$('#mute-i').addClass('icon-line2-volume-off')
+		}
+
+	}
+</script>
+<section id="slider" {%if slider | length != 1%}data-loop='true' data-autoplay='7000'{%endif%} class="slider-element slider-parallax swiper_wrapper min-vh-60 min-vh-md-100 include-header">
+	<div class="slider-inner">
+		<div class="swiper-container swiper-parent">
+			<div class="swiper-wrapper">
+				{%for slide in slider%}
+				<div class="swiper-slide {%if slide.dark%}dark{%endif%}">
+					<div class="container">
+						<div class="slider-caption slider-caption-center">
+							{%if slide.title%}
+							<h2 data-animate="fadeInUp">{{slide.title}}</h2>
+							{%endif%}
+							{%if slide.text%}
+							<p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">
+							{{slide.text}}</p>
+							{%endif%}
+						</div>
+					</div>
+
+
+					{%if slide.video%}
+					<div class="video-wrap">
+						<video playsinline id="slide-video" class='d-block' preload="auto" loop autoplay muted>
+							<source src="{{config['UPLOAD_FOLDER']}}/{{slide.video}}" type='video/mp4' />
+						</video>
+						<div class="video-overlay" style="background-color: rgba(0,0,0,0.55);"></div>
+					</div>
+					{%else%}
+					<div class="swiper-slide-bg" style="background-image: url('{{config['UPLOAD_FOLDER']}}/{{slide.img}}');"></div>
+				    {%endif%}
+				</div>
+				{%if slide.video%}
+				<div class='mute' onclick='mute()'><i id='mute-i' class='icon-line2-volume-off'></i></div>
+				{%endif%}
+				{%endfor%}
+			</div>
+			<div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+			<div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+		</div>
+		<a href="#" data-scrollto="#content" data-offset="100" class="one-page-arrow dark"><i class="icon-angle-down infinite animated fadeInDown"></i></a>
+
+	</div>
+	<div class='widget social_main'>
+			<a href="https://instagram.com/{{settings['instagram']}}" class="mx-2 social-icon si-colored si-instagram" title="Instagram">
+				<i class="icon-instagram"></i>
+				<i class="icon-instagram"></i>
+			</a>
+			<a href="https://t.me/{{settings['telegram']}}" class="mx-2 social-icon si-colored si-intensedebate" title="Telegram">
+				<i class="icon-telegram"></i>
+				<i class="icon-telegram"></i>
+			</a>
+			<a href="https://youtube.com/{{settings['youtube']}}" class="mx-2 social-icon si-colored si-youtube" title="Youtube">
+				<i class="icon-youtube"></i>
+				<i class="icon-youtube"></i>
+			</a>
+		</div>
+
+</section>
+<section id='content'>
+	<div class="content-wrap pb-0" style="background-color: #f9f9f9">
+		<div class="heading-block center">
+			<h2>{{gettext('ПРО АСОЦІАЦІЮ')}}</h2>
+		</div>
+		<div class='container' id='video'>
+			<div class='embed-responsive embed-responsive-16by9'>
+				<iframe width="560" class='embed-responsive-item lazy' height="315" data-src="https://www.youtube.com/embed/{{settings['index_video']}}?autoplay=0&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
+		<div class="section my-0" id='about'>
+			<div class="container">
+				<div class="row mt-4 col-mb-50">
+
+					<div class="col-lg-6" data-animate="fadeInUp">
+						<i class="i-plain color i-large icon-line-info inline-block" style="margin-bottom: 15px;"></i>
+						<div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+							<h4>{{gettext('Про Асоціацію')}}</h4>
+						</div>
+						<p>
+							{{gettext("Асоціація блогерів України створена в 2020 році групою блогерів з метою представлення та захисту блогерської спільноти.")}}
+							</p>
+							<p>
+							{{gettext("Ми об'єднуємо блогерів, які поділяють цінності і цілі асоціації, готові нести відповідальність за власний контент і хочуть впливати на інформаційний простір, частиною якого вони є.
+							Асоціація проводить навчання блогерів, забезпечує можливості для ділового спілкування, пошуку партнерів та взаємодії з аудиторією та рекламодавцями.")}}
+						</p>
+					</div>
+
+
+					<div class="col-lg-6" data-animate="fadeInUp">
+						<i class="i-plain color i-large icon-line-arrow-up-right inline-block" style="margin-bottom: 15px;"></i>
+						<div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+							<h4>{{gettext("Мета")}}</h4>
+						</div>
+						<p>
+							{{gettext("1.  Розвиток і просування блогерської діяльності в Україні.<br>
+										2.  Проведення навчальних онлайн і офлайн заходів для блогерів.<br>
+										3.  Представлення консолідованої позиції блогерского спільноти перед суспільством і органами державної влади.<br>
+										4.  Розробка спільних рішень з питань блогерської діяльності.<br>
+										5.  Вдосконалення законодавства, що регулює діяльність блогерів.<br>
+										6.  Захист професійних інтересів блогерів перед рекламодавцями і недобросовісними блогерами.<br>
+										7.  Регламентування рекламної діяльності блогерів.<br>
+										8.  Здійснення комунікації з соціальними мережами та платформами, на яких розміщені блоги, від імені Асоціації та її членів.<br>
+										9.  Представлення та захист спільних інтересів членів Асоціації;<br>")}}
+						</p>
+					</div>
+
+					<div class="col-lg-6" data-animate="fadeInUp">
+						<i class="i-plain color i-large icon-history inline-block" style="margin-bottom: 15px;"></i>
+						<div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+							<h4>{{gettext("Історія")}}</h4>
+						</div>
+						<p>
+							{{gettext("На сьогодні, Асоціація блогерів України - це об'єднання блогерів, які з ентузіазмом сприймають ідею створення такої асоціації.
+							Асоціація блогерів України об'єднує блогерів з різних сфер. Це політика, наука, мистецтво та бізнес. Важливе місце в Асоціації блогерів України відводиться благодійності. Асоціація блогерів України підтримує соціальні проекти та акції, покликані до благодійності і допомоги нужденним.")}}
+						</p>
+					</div>
+
+					<div class="col-lg-6" data-animate="fadeInUp">
+						<i class="i-plain color i-large icon-line-flag inline-block" style="margin-bottom: 15px;"></i>
+						<div class="heading-block border-bottom-0" style="margin-bottom: 15px;">
+							<h4>{{gettext("Місія")}}</h4>
+						</div>
+						<p>
+							{{gettext("Наша місія - об'єднання блогерів в єдиний міцний союз, що дозволить виявляти, аналізувати, систематизувати і зберігати цінні думки, концептуальні ідеї і різноманітні позитивні новації. Таким чином, ми створимо загальнодоступний банк даних, що включає авторство, а також стимулюємо творчий процес в українському комунікаційному просторі.")}}
+						</p>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<div class="section my-0" id='employers'>
+			<div class="container">
+				<div class="fancy-title title-border">
+						<h3 data-animate="fadeInUp">{{gettext('ОРГАНИ УПРАВЛІННЯ')}}</h3>
+					</div>
+
+					<div class="row col-mb-50 mb-0">
+						{%for emp in employers%}
+						<div data-animate="fadeInUp" class="col-lg-3 col-md-6">
+
+							<div class="team">
+								<div class="team-image">
+									<a href="{{config['UPLOAD_FOLDER']}}/{{emp.img}}" data-lightbox="image">
+										<img src="{{config['THUMBNAIL_FOLDER']}}/{{emp.img}}" alt="{{emp.name_uk}}">
+									</a>
+								</div>
+								<div class="team-desc">
+									<div class="team-title">
+										{%if locale == 'ru' %}
+										<h4>{{emp.name_ru}}</h4><span>{{emp.position_ru}}</span>
+										{%elif locale == 'en' %}
+										<h4>{{emp.name_en}}</h4><span>{{emp.position_en}}</span>
+										{%else%}
+										<h4>{{emp.name_uk}}</h4><span>{{emp.position_uk}}</span>
+										{%endif%}
+
+									</div>
+									<!--
+									<a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+										<i class="icon-facebook"></i>
+										<i class="icon-facebook"></i>
+									</a>
+									<a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+										<i class="icon-twitter"></i>
+										<i class="icon-twitter"></i>
+									</a>
+									<a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+										<i class="icon-gplus"></i>
+										<i class="icon-gplus"></i>
+									</a>-->
+								</div>
+							</div>
+
+						</div>
+						{%endfor%}
+
+					</div>
+					<div data-animate="fadeInUp" class='row col-mb-50 mb-0'>
+						<blockquote>
+							<p>
+								{{gettext("Органами управління Ассоціації блогерів України є Загальні збори членів Ассоціації, Правління Ассоціації та Голова.
+								Ми раді представити Вам нашу команду:
+								Голова Асоціації -  Галущак Евген Володимирович
+								Секретар Асоціації  - Сурков Віталій Константинович
+								Члени правління Єнько Марина Валеріївна, Рисак Марія Ігорівна
+								Мадяр Анастасія Василівна - Головний юрист
+								Іванова Анна Олегівна - юрист")}}
+							</p>
+						</blockquote>
+					</div>
+					<div class='container pb-2' id='video2'>
+						<div class='embed-responsive embed-responsive-16by9'>
+							<iframe width="560" class='embed-responsive-item lazy' height="315" data-src="https://www.youtube.com/embed/{{settings['index_video_org']}}?autoplay=0&mute=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class='section my-0 animated slideInLeft' id='event-block'>
+			<div class='container clearfix' >
+				<div class='row'>
+					<div class='col'>
+						<div class="heading-block center">
+							<h3>{{gettext('РОЗКЛАД ЗАХОДІВ')}}</h3>
+						</div>
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col'>
+						<a title='Показать календарь событий' class="float-right button button-dark button-rounded icon-calendar-alt1 float-right" style="color: #F7F7F7; float:right;" onclick='$("#calendar-block").removeClass("d-none"); $("#event-block").addClass("d-none");'></a>
+					</div>
+				</div>
+				<div class="row" id='calendar-event'>
+					{%for event in events%}
+					<div class="entry event col-12">
+						<div class="grid-inner row align-items-center no-gutters p-4">
+							<div class="entry-image col-md-4 mb-md-0">
+								<a href="/event/{{event.id}}">
+									<img src="{{config['THUMBNAIL_FOLDER']}}/{{event.img}}" alt="{{event.name}}">
+									<div class="entry-date">{{event.date.strftime('%d')}}<span>{{event.date.strftime('%b')}}</span></div>
+								</a>
+							</div>
+							<div class="col-md-8 pl-md-4">
+								<div class="entry-title title-sm">
+									<h2><a href="/event/{{event.id}}">{{event.name}}</a></h2>
+								</div>
+								<div class="entry-meta">
+									<ul>
+										<li><i class="icon-time"></i> {{event.date.strftime('%H:%M')}}</li>
+										<li><i class="icon-map-marker2"></i> {{event.place}}</li>
+									</ul>
+								</div>
+								<div class="entry-content">
+									<p>{{event.short | safe}}</p>
+									<a href="/event/{{event.id}}" class="btn btn-danger">{{gettext("Читати далі")}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					{%endfor%}
+
+				</div>
+			</div>
+		</div>
+		<div class='d-none animated slideInRight' id='calendar-block'>
+			<div class='container clearfix'>
+				<div class='row section m-0'>
+					<div class='col'>
+						<div class="heading-block center">
+							<h2>{{gettext('АФІША ЗАХОДІВ')}}</h2>
+						</div>
+					</div>
+				</div>
+				<div class='row m-0'>
+					<div class='col'>
+						<a title='Показать список событий' class="float-right button button-dark button-rounded icon-list-alt1 float-right" style="color: #F7F7F7; float:right;" onclick='$("#calendar-block").addClass("d-none"); $("#event-block").removeClass("d-none");'></a>
+					</div>
+				</div>
+			</div>
+			<div class='ml-auto my-0 section pb-0' >
+				<div class="parallax header-stick bottommargin-lg dark pb-0" style="padding: 120px 0; background-image: url('/static/images/parallax/calendar.jpg'); height: auto; background-size: cover; background-attachment: initial;" data-bottom-top="background-position:0px 50px;" data-top-bottom="background-position:0px -100px;">
+					<div class="container clearfix">
+						<div class="events-calendar">
+							<div class="events-calendar-header clearfix">
+								<!--<h2>Афиша мероприятий</h2>-->
+								<h3 class="calendar-month-year">
+									<span id="calendar-month" class="calendar-month"></span>
+									<span id="calendar-year" class="calendar-year"></span>
+									<nav>
+										<span id="calendar-prev" class="calendar-prev"><i class="icon-chevron-left"></i></span>
+										<span id="calendar-next" class="calendar-next"><i class="icon-chevron-right"></i></span>
+										<span id="calendar-current" class="calendar-current" title="Got to current date"><i class="icon-reload"></i></span>
+									</nav>
+								</h3>
+							</div>
+							<div id="calendar" class="fc-calendar-container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<style type="text/css">
+	.gal-img {
+		height: 241px;
+	}
+</style>
+
+		<div class="section my-0 pt-0" id='gallery-block'>
+			<div class="heading-block center">
+				<h2>Галерея</h2>
+			</div>
+			<div id="portfolio" class="portfolio row no-gutters">
+					{%for post in gallery%}
+					<!-- Portfolio Item: Start -->
+					<article class="portfolio-item col-lg-4 col-md-4 col-sm-6 col-12 gallery-item-{%if loop.index % 3 == 1 %}1{%elif loop.index % 3 == 2 %}2{%elif loop.index % 3 == 0 %}3{%endif%}">
+						<!-- Grid Inner: Start -->
+						<div class="grid-inner">
+							<!-- Image: Start -->
+							<div class="portfolio-image">
+								{%if post.images | length > 1%}
+								<div class="fslider" data-arrows="false" data-speed="400" data-pause="4000">
+									<div class="flexslider">
+										<div class="slider-wrap">
+											{%for image in post.images%}
+											<div class="slide"><img src="{{config['THUMBNAIL_FOLDER']}}/{{image.file_name}}" alt="{{post.name}}"></div>
+											{%endfor%}
+										</div>
+									</div>
+								</div>
+								{%else%}
+								<a href="portfolio-single.html">
+									{%if post.images%}
+									<img src="{{config['THUMBNAIL_FOLDER']}}/{{post.images[0].file_name}}" alt="{{post.name}}">
+									{%endif%}
+								</a>
+								{%endif%}
+								<!-- Overlay: Start -->
+								<div class="bg-overlay" {%if post.images | length > 1%}data-lightbox="gallery"{%endif%}>
+									<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
+										{%if post.video%}
+										<a href="{{post.video}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="iframe"><i class="icon-line-play"></i></a>
+										{%endif%}
+										{%if post.images | length > 1%}
+										{%for image in post.images%}
+										{%if loop.index == 1%}
+										<a href="{{config['UPLOAD_FOLDER']}}/{{image.file_name}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
+										{%else%}
+										<a href="{{config['UPLOAD_FOLDER']}}/{{image.file_name}}" class="d-none" data-lightbox="gallery-item"></a>
+										{%endif%}
+										{%endfor%}
+										{%else%}
+										{%if post.images%}
+										<a href="{{config['UPLOAD_FOLDER']}}/{{post.images[0].file_name}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
+										{%endif%}
+										{%endif%}
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+								</div>
+								<!-- Overlay: End -->
+							</div>
+							<!-- Image: End -->
+							<!-- Decription: Start -->
+							<div class="portfolio-desc">
+								{%if post.name%}
+								<h3><a href="portfolio-single.html">{{post.name}}</a></h3>
+								{%endif%}
+								{%if post.details%}
+								<span>{{post.details}}</span>
+								{%endif%}
+							</div>
+							<!-- Description: Start -->
+						</div>
+						<!-- Grid Inner: End -->
+					</article>
+					<!-- Portfolio Item: End -->
+					{%endfor%}
+				</div><!-- #portfolio end -->
+
+				<div class="page-load-status hovering-load-status">
+					<div class="css3-spinner infinite-scroll-request">
+						<div class="css3-spinner-ball-pulse-sync">
+							<div></div>
+							<div></div>
+							<div></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Pagination
+				============================================= -->
+				<div class="center">
+					<a href="/get_gallery_2" class="button button-dark button-rounded load-next-portfolio" style="color: #F7F7F7;">{{gettext('БІЛЬШЕ...')}}</a>
+				</div>
+			</div>
+	</div>
+</section>
+</div>
+{%endblock%}
+
+{%block scripts%}
+<script src="/static/js/jquery.calendario.js"></script>
+<script src="/static/js/events-data.js"></script>
+<script src="/static/js/plugins.infinitescroll.js"></script>
+
+<script>
+
+		var data;
+	    $.ajax({
+	    dataType: "json",
+	    url: '/get_events',
+	    data: data,
+	    success: function(data) {
+	         data = data;
+	         var cal = $( '#calendar' ).calendario( {
+				onDayClick : function( $el, $contentEl, dateProperties ) {
+
+					for( var key in dateProperties ) {
+						console.log( key + ' = ' + dateProperties[ key ] );
+					}
+
+				},
+				weeks : [ 'Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота' ],
+				weekabbrs : [ 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' ],
+				months : [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ],
+				monthabbrs : [ 'Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек' ],
+				caldata : data
+			} ),
+			$month = $( '#calendar-month' ).html( cal.getMonthName() ),
+			$year = $( '#calendar-year' ).html( cal.getYear() );
+			$( '#calendar-next' ).on( 'click', function() {
+			cal.gotoNextMonth( updateMonthYear );
+			} );
+			$( '#calendar-prev' ).on( 'click', function() {
+				cal.gotoPreviousMonth( updateMonthYear );
+			} );
+			$( '#calendar-current' ).on( 'click', function() {
+				cal.gotoNow( updateMonthYear );
+			} );
+
+			function updateMonthYear() {
+				$month.html( cal.getMonthName() );
+				$year.html( cal.getYear() );
+			};
+	      }
+	    });
+
+
+
+
+
+	</script>
+<script>
+
+		jQuery(window).on( 'load', function(){
+
+			var $container = $('#portfolio');
+
+			$container.infiniteScroll({
+				path: '.load-next-portfolio',
+				button: '.load-next-portfolio',
+				scrollThreshold: false,
+				history: false,
+				status: '.page-load-status'
+			});
+
+			$container.on( 'load.infiniteScroll', function( event, response, path ) {
+				var $items = $( response ).find('.portfolio-item');
+				// append items after images loaded
+				$items.imagesLoaded( function() {
+					$container.append( $items );
+					$container.isotope( 'insert', $items );
+					setTimeout( function(){
+						$container.isotope('layout');
+						SEMICOLON.widget.loadFlexSlider();
+						SEMICOLON.widget.hoverAnimation();
+					}, 1000 );
+				});
+			});
+
+		});
+
+	</script>
+{%endblock%}

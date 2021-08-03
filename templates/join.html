@@ -1,0 +1,96 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<section id="page-title">
+
+	<div class="container clearfix">
+		<h1>{{gettext('Вступити до асоціації')}}</h1>
+		<span>{{gettext('Станьте частиною спільноти')}}</span>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">{{gettext('Головна')}}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{gettext('Вступити до асоціації')}}</li>
+		</ol>
+	</div>
+
+</section><!-- #page-title end -->
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+			<div class="row align-items-stretch col-mb-50">
+				<div class="col-lg-9 postcontent">
+					
+
+					<p>
+						{{gettext("Членами Асоціації можуть бути громадяни України, іноземці та особи без громадянства, які перебувають в Україні на законних підставах, які досягли 14 років і які визнають  Статут Асоціації та сприяють діяльності, що спрямована на досягнення мети і завдань Асоціації.
+						Голова Правління приймає рішення про прийом або відмову у прийомі до Асоціації протягом місяця з дати подання заяви до Асоціації.
+						Для  вступу до Асоціації необхідно заповнити форму нижче та прикріпити до неї сканкопию <a href='/static/uploads/zayava.pdf'>заяви</a>.
+						Після підтвердження членства оригінал заяви необхідно відправити поштою. Інформація щодо адреси буде надана Вам у листі-підтвердженні.") | safe}}
+					</p>
+					<div class='container pb-1' id='video'>
+						<div class='embed-responsive embed-responsive-16by9'>
+							<iframe width="560" class='embed-responsive-item lazy' height="315" data-src="https://www.youtube.com/embed/{{settings['join_video']}}?autoplay=0&mute=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						</div>
+					</div>
+					<form method="POST" enctype="multipart/form-data" action='/join'>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputName">{{gettext("Ім'я")}}</label>
+								<input type="text" class="form-control" name='name' id="inputName" placeholder="Имя">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputLastName">{{gettext('Прізвище')}}</label>
+								<input type="text" class="form-control" name='lastname' id="inputLastName" placeholder="Фамилия">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputLink">{{gettext('Посилання на блог')}}</label>
+							<input type="text" class="form-control" name='link' id="inputLink" placeholder="instagram.com/username">
+						</div>
+						<div class="form-group">
+							<label for="inputCity">{{gettext('Місто')}}</label>
+							<input type="text" class="form-control" name='city' id="inputCity" placeholder="Киев">
+						</div>
+						<div class="form-group">
+							<label for="inputPhone">{{gettext('Телефон')}}</label>
+							<input type="tel" class="form-control" name='phone' id="inputPhone" placeholder="+380 000 00 00">
+						</div>
+						<div class="form-group">
+							<label for="inputEmail">Email</label>
+							<input type="email" class="form-control" name='email' id="inputEmail" placeholder="Email">
+						</div>
+						<div class="form-row">
+							<div class="input-group col-md-6">
+							  <div class="custom-file">
+							    <input type="file" class="custom-file-input" name='photo' id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+							    <label class="custom-file-label" for="inputGroupFile01">{{gettext('Докласти фото')}}</label>
+							  </div>
+							</div>
+							<div class="input-group col-md-6">
+							  <div class="custom-file">
+							    <input type="file" class="custom-file-input" name='scan' id="inputGroupFile02" aria-describedby="inputGroupFileAddon01">
+							    <label class="custom-file-label"  for="inputGroupFile02">{{gettext('Докласти скан-копію заяви')}}</label>
+							  </div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">{{gettext('Надіслати')}}</button>
+					</form>
+				</div>
+				<div class="sidebar col-lg-3">
+					<div class="sidebar-widgets-wrap">
+						<div class="widget clearfix">
+
+							<h4>Instagram</h4>
+							<div id="instagram-photos" class="instagram-photos masonry-thumbs grid-container grid-4 customjs" data-user="{{settings['instagram']}}"></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+{%endblock%}

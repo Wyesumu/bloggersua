@@ -1,0 +1,11 @@
+{% extends 'admin/model/edit.html' %}
+
+{% block tail %}
+    {{ super() }}
+<script type="text/javascript">
+	$(document).ready(function (e) {
+		$('#photo').replaceWith('<a href="{{config["UPLOAD_FOLDER"]}}/' + $('#photo').val() + '"><img style="max-width:100px" src="{{config["UPLOAD_FOLDER"]}}/' + $('#photo').val() + '"></a>')
+		$('#statement').replaceWith('<a href="{{config["UPLOAD_FOLDER"]}}/' + $('#statement').val() + '"><img style="max-width:100px" src="{{config["UPLOAD_FOLDER"]}}/' + $('#statement').val() + '"></a>')
+	})
+</script>
+{%endblock%}

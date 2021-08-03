@@ -1,0 +1,66 @@
+{%extends 'layout.html'%}
+{%block content%}
+<script src="/static/js/components/moment.js"></script>
+<section id="page-title">
+
+			<div class="container clearfix">
+				<h1 style='max-width: 70%;'>{{event.name}}</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">{{gettext('Головна')}}</a></li>
+					<li class="breadcrumb-item"><a href="/#event-block">{{gettext('Заходи')}}</a></li>
+					<li class="breadcrumb-item active" aria-current="page">{{gettext('Про захід')}}</li>
+				</ol>
+			</div>
+
+		</section><!-- #page-title end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+
+					<div class="single-event">
+
+						<div class="row col-mb-50">
+							<div class="col-md-8 col-lg-9">
+								<div class="entry-image mb-0">
+									<a href="#"><img src="{{config['UPLOAD_FOLDER']}}/{{event.img}}" alt="{{event.name}}"></a>
+									<div class="entry-overlay d-flex align-items-center justify-content-center">
+										<span class="d-none d-md-flex">{{gettext('Розпочнеться через:')}} </span><div class="countdown d-block d-md-flex" data-year="{{event.date.strftime('%Y')}}" data-month="{{event.date.strftime('%-m')}}" data-day="{{event.date.strftime('%-d')}}"></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4 col-lg-3">
+								<div class="card event-meta mb-3">
+									<div class="card-header"><h5 class="mb-0">{{gettext('Інформація про захід')}}</h5></div>
+									<div class="card-body">
+										<ul class="iconlist mb-0">
+											<li><i class="icon-calendar3"></i> {{event.date.strftime('%d-%m-%Y')}}</li>
+											<li><i class="icon-time"></i> {{event.date.strftime('%H:%M')}}</li>
+											<li><i class="icon-map-marker2"></i> {{event.place}}</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="w-100"></div>
+
+							<div class="col-md-8 col-lg-9">
+
+								<h3>{{gettext('Опис')}}</h3>
+
+								{{event.description | safe}}
+
+							</div>
+
+							<div class="w-100"></div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</section><!-- #content end -->
+{%endblock%}

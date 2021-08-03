@@ -1,0 +1,199 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<section id="page-title">
+
+			<div class="container clearfix">
+				<h1>Наши блогеры</h1>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">Главная</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Реестр блогеров</li>
+				</ol>
+			</div>
+
+		</section><!-- #page-title end -->
+
+		<!-- Page Sub Menu
+		============================================= -->
+		<div id="page-menu" class="no-sticky">
+			<div id="page-menu-wrap">
+				<div class="container">
+					<div class="page-menu-row">
+
+						<div class="page-menu-title">Фильтр <span>Площадок</span></div>
+
+						<nav class="page-menu-nav">
+							<ul class="page-menu-container custom-filter" data-container="#portfolio" data-active-class="current">
+								<li class="page-menu-item current"><a href="#" data-filter="*"><div>Все</div></a></li>
+								<li class="page-menu-item"><a href="#" data-filter=".pf-yt"><div>YouTube</div></a></li>
+								<li class="page-menu-item"><a href="#" data-filter=".pf-insta"><div>Instagram</div></a></li>
+								<li class="page-menu-item"><a href="#" data-filter=".pf-tiktok"><div>TikTok</div></a></li>
+								<li class="page-menu-item"><a href="#" data-filter=".pf-likee"><div>Likee</div></a></li>
+							</ul>
+						</nav>
+
+						<div id="page-menu-trigger"><i class="icon-reorder"></i></div>
+
+					</div>
+				</div>
+			</div>
+		</div><!-- #page-menu end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+			<div class="content-wrap py-0">
+				<div id="portfolio" class="portfolio row grid-container no-gutters">
+					<!-- Portfolio Item: Start -->
+					{%for blogger in bloggers%}
+					{%if blogger.courator%}
+					<article class="portfolio-item col-lg-6 col-md-4 col-sm-6 col-12
+					{% if blogger.tiktok_link -%} 
+					pf-tiktok
+					{%- endif -%}
+					{%- if blogger.youtube_link -%}
+					pf-yt
+					{%- endif -%}
+					{%- if blogger.instagram_link -%}
+					pf-insta
+					{%- endif -%}
+					{%- if blogger.likee_link -%}
+					pf-likee
+					{%- endif %}
+					 wide" style='max-width: 400px;'>
+						<!-- Grid Inner: Start -->
+						<div class="grid-inner">
+							<!-- Image: Start -->
+							<div class="portfolio-image">
+								<a href="portfolio-single.html">
+									<img src="{{config['UPLOAD_FOLDER']}}/{{blogger.img}}" alt="{{blogger.name}}">
+								</a>
+								<!-- Overlay: Start -->
+								<div class="bg-overlay">
+									<div class="bg-overlay-content dark flex-column" data-hover-animate="fadeIn">
+										<!-- Decription: Start -->
+										<div class="portfolio-desc pt-0 center" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350">
+											<h3><a href="portfolio-single.html">{{blogger.name}}</a></h3>
+											<span>{{blogger.details}}</span>
+										</div>
+										<!-- Description: Start -->
+										<div class="d-flex">
+											<span>
+												{%if blogger.tiktok_link%}
+												<a href="{{blogger.tiktok_link}}" class="social-icon si-colored si-tiktok" title="TikTok">
+													<i class="icon-tiktok"></i>
+													<i class="icon-tiktok"></i>
+												</a>
+												{%endif%}
+												{%if blogger.instagram_link%}
+												<a href="{{blogger.instagram_link}}" class="social-icon si-colored si-instagram" title="Instagram">
+													<i class="icon-instagram"></i>
+													<i class="icon-instagram"></i>
+												</a>
+												{%endif%}
+												{%if blogger.youtube_link%}
+												<a href="{{blogger.youtube_link}}" class="social-icon si-colored si-youtube" title="youtube">
+													<i class="icon-youtube"></i>
+													<i class="icon-youtube"></i>
+												</a>
+												{%endif%}
+												{%if blogger.likee_link%}
+												<a href="{{blogger.youtube_link}}" class="social-icon si-colored si-instagram" title="Likee">
+													<i class="icon-likee"><img src="https://img.icons8.com/bubbles/50/000000/likee-ap.png"/></i>
+													<i class="icon-likee"><img src="https://img.icons8.com/bubbles/50/000000/likee-ap.png"/></i>
+												</a>
+												{%endif%}
+											</span>
+										</div>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+								</div>
+								<!-- Overlay: End -->
+							</div>
+							<!-- Image: End -->
+						</div>
+						<!-- Grid Inner: End -->
+					</article>
+					{%endif%}
+					{%endfor%}
+					<!-- Portfolio Item: Start -->
+					{%for blogger in bloggers%}
+					{%if not blogger.courator%}
+					<article class="portfolio-item col-lg-6 col-md-4 col-sm-6 col-12
+					{% if blogger.tiktok_link -%} 
+					pf-tiktok
+					{%- endif -%}
+					{%- if blogger.youtube_link -%}
+					pf-yt
+					{%- endif -%}
+					{%- if blogger.instagram_link -%}
+					pf-insta
+					{%- endif -%}
+					{%- if blogger.likee_link -%}
+					pf-likee
+					{%- endif %}
+					 wide" style='max-width: 400px;'>
+						<!-- Grid Inner: Start -->
+						<div class="grid-inner">
+							<!-- Image: Start -->
+							<div class="portfolio-image">
+								<a href="portfolio-single.html">
+									<img src="{{config['UPLOAD_FOLDER']}}/{{blogger.img}}" alt="{{blogger.name}}">
+								</a>
+								<!-- Overlay: Start -->
+								<div class="bg-overlay">
+									<div class="bg-overlay-content dark flex-column" data-hover-animate="fadeIn">
+										<!-- Decription: Start -->
+										<div class="portfolio-desc pt-0 center" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350">
+											<h3><a href="portfolio-single.html">{{blogger.name}}</a></h3>
+											<span>{{blogger.details}}</span>
+										</div>
+										<!-- Description: Start -->
+										<div class="d-flex">
+											<span>
+												{%if blogger.tiktok_link%}
+												<a href="{{blogger.tiktok_link}}" class="social-icon si-colored si-tiktok" title="TikTok">
+													<i class="icon-tiktok"></i>
+													<i class="icon-tiktok"></i>
+												</a>
+												{%endif%}
+												{%if blogger.instagram_link%}
+												<a href="{{blogger.instagram_link}}" class="social-icon si-colored si-instagram" title="Instagram">
+													<i class="icon-instagram"></i>
+													<i class="icon-instagram"></i>
+												</a>
+												{%endif%}
+												{%if blogger.youtube_link%}
+												<a href="{{blogger.youtube_link}}" class="social-icon si-colored si-youtube" title="youtube">
+													<i class="icon-youtube"></i>
+													<i class="icon-youtube"></i>
+												</a>
+												{%endif%}
+												{%if blogger.likee_link%}
+												<a href="{{blogger.youtube_link}}" class="social-icon si-colored si-instagram" title="Likee">
+													<i class="icon-likee"><img src="https://img.icons8.com/bubbles/50/000000/likee-ap.png"/></i>
+													<i class="icon-likee"><img src="https://img.icons8.com/bubbles/50/000000/likee-ap.png"/></i>
+												</a>
+												{%endif%}
+											</span>
+										</div>
+									</div>
+									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+								</div>
+								<!-- Overlay: End -->
+							</div>
+							<!-- Image: End -->
+						</div>
+						<!-- Grid Inner: End -->
+					</article>
+					{%endif%}
+					{%endfor%}
+					<!-- Portfolio Item: End -->
+
+				</div><!-- #portfolio end -->
+
+			</div>
+		</section><!-- #content end -->
+
+{%endblock%}

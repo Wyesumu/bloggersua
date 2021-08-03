@@ -1,0 +1,166 @@
+{% extends 'admin/model/edit.html' %}
+
+{% block tail %}
+    {{ super() }}
+    {{ ckeditor.load() }}
+
+	  <div id="upload_modal" style='display: none'>
+	    <p id="msg"></p>
+	    <div class="row">
+	    	<div class="col-lg-6">
+		    <div class="input-group">
+		      <input class="form-control"  type="file" id="multiFiles" name="files[]" multiple="multiple"/>
+		      <span class="input-group-btn" style="width: auto; ">
+		        <!--<a class="btn btn-default" id="upload">Загрузить</a>-->
+		        <div style="display:none; float:right;" class="loader"></div>
+		      </span>
+		    </div>
+		  </div>
+		</div>
+	  </div>
+<!--
+	  <div id="type_modal">
+	    <div class="row">
+	    	<div class="col-lg-6">
+		    <div class="input-group">
+		      <select name="post_type" id="post_type" class='form-control'>
+				  <option value="video">Видео</option>
+				  <option value="photo">Фото</option>
+			  </select>
+		    </div>
+		  </div>
+		</div>
+	  </div>-->
+
+<style>
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 2s linear infinite;
+}
+
+.f-l{
+    float:left !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
+    
+    <script type="text/javascript">
+    	/*CKEDITOR.replace( 'content' );*/
+    	if ($("#temp_field").length){
+    		$("#temp_field").replaceWith($("#upload_modal"));
+    		$("#upload_modal").css('display','block')
+    	}
+    	/*$("#temp_choice").replaceWith($("#type_modal"));*/
+
+    	$(document).ready(function (e) {
+
+    		var elements = $( "li.select2-search-choice" ).children()
+
+    		for (var x = 0; x < elements.length; x=x+2){
+    			$(elements[x]).html('<img style="max-width:100px" src="{{config["THUMBNAIL_FOLDER"]}}/' + $(elements[x]).html() + '">')
+    		}
+
+    	/*$('#post_type').on('change', function(){
+    		if ($(this).val() == 'video'){
+    			$('#multiFiles').prop('disabled', true);
+    			$('#video').prop('disabled', false);
+    		}
+    		else if($(this).val() == 'photo'){
+    			$('#multiFiles').prop('disabled', false);
+    			$('#video').prop('disabled', true);
+    		}
+    	})*/
+
+/*
+    		$('#title').on('input',function () {
+    			var str = $('#title').val()
+
+    			str = str.replace(/^\s+|\s+$/g, ''); // trim
+			    str = str.toLowerCase();
+			  
+			    // remove accents, swap ñ for n, etc
+			    var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+			    var to   = "aaaaeeeeiiiioooouuuunc------abvgdeejzijklmnoprstufhccss-i-eua";
+			    for (var i=0, l=from.length ; i<l ; i++) {
+			        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+			    }
+
+			    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+			        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+			        .replace(/-+/g, '-'); // collapse dashes
+
+			    $('#url').val(str)
+
+    		})*/
+
+			$('#multiFiles').on('change', function () {
+			    $('.loader').css('display','block');
+				var form_data = new FormData();
+				var ins = document.getElementById('multiFiles').files.length;
+				const urlParams = new URLSearchParams(window.location.search);
+
+				if(ins == 0) {
+					$('#msg').html('<span style="color:red">Select at least one file</span>');
+					$('.loader').css('display','none');
+					return;
+				}
+
+				for (var x = 0; x < ins; x++) {
+					form_data.append("files[]", document.getElementById('multiFiles').files[x]);
+				}
+
+				$.ajax({
+					url: '/save_image?id='+urlParams.get('id'), // point to server-side URL
+					dataType: 'json', // what to expect back from server
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: form_data,
+					type: 'post',
+					success: function (response) { // display success response
+						$('#msg').html('');
+
+						/*for (data in response['filenames']) {
+							var imgHtml = CKEDITOR.dom.element.createFromHtml('<img src="' + response['filenames'][data] + '"/>')
+							CKEDITOR.instances.content.insertElement(imgHtml);
+						}*/
+
+						$.each(response, function (key, data) {
+							if (key == 'filenames') {
+								console.log(key, data);
+								for (var image in data){
+								    $('.select2-choices').append('<li class="select2-search-choice">    <div><img style="max-width:100px" src="{{config["THUMBNAIL_FOLDER"]}}/'+data[image]+'"></div>    <a href="#" class="select2-search-choice-close" tabindex="-1"></a></li>')
+								}
+								$('.loader').css('display','none');
+								if (window.location.href.indexOf("/edit/") > -1){
+								    location.reload();
+								}
+							} else if (key !== 'message') {
+								$('#msg').append(key + ' -> ' + data + '<br/>');
+								$('.loader').css('display','none');
+							}else {
+								$('#msg').append(data + '<br/>');
+								$('.loader').css('display','none');
+							}
+						})
+					},
+					error: function (response) {
+						$('.loader').css('display','none');
+						$('#msg').html(response.message); // display error response
+					}
+				});
+			});
+		});
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="/static/style.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/swiper.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/magnific-popup.css" type="text/css" />
+	<link rel="stylesheet" href="/static/css/flags.css" type="text/css" />
+	<link rel="icon" type="image/ico" href="/static/favicon.ico" />
+
+	{%block styles%}
+	{%endblock%}
+
+	<link rel="stylesheet" href="/static/css/custom.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>{{settings['title']}}</title>
+
+</head>
+
+<body class="stretched page-transition" data-loader='2' data-loader-timeout="4000" data-animation-in="fadeIn" data-speed-in="100" data-animation-out="fadeOut" data-speed-out="100">
+
+	<div id="wrapper" class="clearfix">
+
+		<header id="header" class="full-header transparent-header" data-sticky-class="not-dark">
+			<div id="header-wrap">
+				<div class="container">
+					<div class="header-row">
+						<div id="logo" style='border-right: 0;'>
+							<a href="/" class="standard-logo" data-dark-logo="/static/images/logo-dark.png"><img src="/static/images/logo.png" alt="Ассоциация блогеров Украины"></a>
+							<a href="/" class="retina-logo" data-dark-logo="/static/images/logo-dark@2x.png"><img src="/static/images/logo@2x.png" alt="Ассоциация блогеров Украины"></a>
+						</div><!-- #logo end -->
+						<div id="primary-menu-trigger">
+							<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+						</div>
+						<nav class="primary-menu">
+							<ul class="menu-container" style='border-right: 0;'>
+								<li class='menu-item'>
+									<a class="menu-link" href="/"><div>{{gettext('Головна')}}</div></a>
+								</li>
+								<li class='menu-item'>
+									<a class="menu-link" href="/partners"><div>{{gettext('Для партнерів')}}</div></a>
+								</li>
+								<li class='menu-item'>
+									<a class="menu-link" href="/join"><div>{{gettext('Вступити до асоціації')}}</div></a>
+								</li>
+								<li class='menu-item'>
+                                                                        <a class="menu-link" href="{{settings.statut_file}}"><div>{{gettext('Статут Асоціації')}}</div></a>
+                                                                </li>
+								<!--
+								<li class='menu-item'>
+									<a class="menu-link" href="/bloggers"><div>{{gettext('Реєстр блогерів')}}</div></a>
+								</li>-->
+								<div class="dropdown">
+									<a class="dropdown-toggle" style='color:gray' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										{%if locale == 'en'%}
+										<span class="flag-icon flag-icon-gb">
+										{%elif locale == 'ru'%}
+										<span class="flag-icon flag-icon-ru">
+										{%else%}
+										<span class="flag-icon flag-icon-ua">
+										{%endif%}
+										
+									</a>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+									    <a class="dropdown-item" href="/language/uk"><span class="flag-icon flag-icon-ua"></span><span class='pl-1'>Українська</span></a>
+									    <a class="dropdown-item" href="/language/en"><span class="flag-icon flag-icon-gb"></span><span class='pl-1'>English</span></a>
+									    <a class="dropdown-item" href="/language/ru"><span class="flag-icon flag-icon-ru"></span><span class='pl-1'>Русский</span></a>
+									 </div>
+								</div>
+
+								
+								<!--
+								<li class='menu-item'>
+									<a class="menu-link" href="/map"><div>Карта представительств</div></a>
+								</li>
+								-->
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="header-wrap-clone"></div>
+		</header>
+		{% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+              {{message}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {%endfor%}
+		{%block content%}
+		{%endblock%}
+
+		<footer id="footer" class="dark">
+			<div class="container">
+
+				<!-- Footer Widgets
+				============================================= -->
+				<div class="footer-widgets-wrap">
+
+					<div class="row col-mb-50">
+						<div class="col-lg-8">
+
+							<div class="row col-mb-50">
+								<div class="col-md-4">
+
+									<div class="widget clearfix">
+
+										<img src="/static/footer_logo.png" alt="Image" class="footer-logo">
+
+										{{gettext("<p>Об'єднуємо блогерів в <strong>єдиний міцний</strong> союз</p>")}}
+
+									</div>
+
+								</div>
+								<div class="col-md-4">
+									<div style="background: url('/static/images/world-map.png') no-repeat center center; background-size: 100%;">
+										<address>
+										<strong>{{gettext('Адреса:')}}</strong><br>
+										{{settings['address']}}
+										</address>
+										<abbr title="Email Address"><strong>Email:</strong></abbr> {{settings['email']}}
+									</div>
+								</div>
+
+								<div class="col-md-4">
+
+									<div class="widget widget_links clearfix">
+
+										<h4>{{gettext('Меню')}}</h4>
+
+										<ul>
+											<li><a href="/">{{gettext('Головна')}}</a></li>
+											<li><a href="/partners">{{gettext('Для партнерів')}}</a></li>
+											<li><a href="/join">{{gettext('Вступити до асоціації')}}</a></li>
+											<!--<li><a href="/bloggers">{{gettext('Реєстр блогерів')}}</a></li>-->
+										</ul>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="col-lg-4">
+
+							<div class="row col-mb-50">
+
+								<div class="col-md-5 col-lg-12">
+									<div class="widget subscribe-widget clearfix">
+										<h5>{{gettext('<strong> Підпишіться </strong> на нашу розсилку, щоб отримувати важливі новини, цікаві пропозиції та корисні новини')}}</h5>
+										<div class="widget-subscribe-form-result"></div>
+										<form id="widget-subscribe-form" action="include/subscribe.php" method="post" class="mb-0">
+											<div class="input-group mx-auto">
+												<div class="input-group-prepend">
+													<div class="input-group-text"><i class="icon-email2"></i></div>
+												</div>
+												<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Введите ваш эл. адрес">
+												<div class="input-group-append">
+													<button class="btn btn-success" type="submit">{{gettext('Підписатися')}}</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div><!-- .footer-widgets-wrap end -->
+
+			</div>
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+				<div class="container">
+
+					<div class="row col-mb-30">
+
+						<div class="col-md-6 text-center text-md-left">
+							{{gettext('Copyrights &copy; 2020 All Rights Reserved')}}<br>
+							<!--<div class="copyright-links"><a href="#">{{gettext('Terms of Use')}}</a> / <a href="#">{{gettext('Privacy Policy')}}</a></div>-->
+						</div>
+
+						<div class="col-md-6 text-center text-md-right">
+							<div class="d-flex justify-content-center justify-content-md-end">
+								<a href="https://t.me/{{settings['telegram']}}" class="social-icon si-small si-borderless si-facebook">
+									<i class="icon-telegram"></i>
+									<i class="icon-telegram"></i>
+								</a>
+
+								<a href="https://instagram.com/{{settings['instagram']}}" class="social-icon si-small si-borderless si-instagram">
+									<i class="icon-instagram"></i>
+									<i class="icon-instagram"></i>
+								</a>
+
+								<a href="https://youtube.com/{{settings['youtube']}}" class="social-icon si-small si-borderless si-youtube">
+									<i class="icon-youtube"></i>
+									<i class="icon-youtube"></i>
+								</a>
+							</div>
+
+							<div class="clear"></div>
+
+							<i class="icon-envelope2"></i> {{settings['email']}} <span class="middot">&middot;</span>
+						</div>
+
+					</div>
+
+				</div>
+			</div><!-- #copyrights end -->
+		</footer><!-- #footer end -->
+		</div>
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="/static/js/jquery.js"></script>
+	<script src="/static/js/plugins.pagetransition.js"></script>
+	<script src="/static/js/plugins.min.js"></script>
+	
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="/static/js/functions.js"></script>
+	<script src="/static/js/flag-docs.js"></script>
+
+	
+	{%block scripts%}
+	{%endblock%}
+</body>
+</html>

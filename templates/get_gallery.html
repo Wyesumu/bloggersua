@@ -1,0 +1,67 @@
+{%for post in gallery%}
+<!-- Portfolio Item: Start -->
+<article class="portfolio-item col-lg-4 col-md-4 col-sm-6 col-12 gallery-item-{%if loop.index % 3 == 1 %}1{%elif loop.index % 3 == 2 %}2{%elif loop.index % 3 == 0 %}3{%endif%}">
+  <!-- Grid Inner: Start -->
+  <div class="grid-inner">
+    <!-- Image: Start -->
+    <div class="portfolio-image">
+      {%if post.images | length > 1%}
+      <div class="fslider" data-arrows="false" data-speed="400" data-pause="4000">
+        <div class="flexslider">
+          <div class="slider-wrap">
+            {%for image in post.images%}
+            <div class="slide"><img src="{{config['THUMBNAIL_FOLDER']}}/{{image.file_name}}" alt="{{post.name}}"></div>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+      {%else%}
+      <a href="portfolio-single.html">
+        {%if post.images%}
+        <img src="{{config['THUMBNAIL_FOLDER']}}/{{post.images[0].file_name}}" alt="{{post.name}}">
+        {%endif%}
+      </a>
+      {%endif%}
+      <!-- Overlay: Start -->
+      <div class="bg-overlay" {%if post.images | length > 1%}data-lightbox="gallery"{%endif%}>
+        <div class="bg-overlay-content dark" data-hover-animate="fadeIn">
+          {%if post.video%}
+          <a href="{{post.video}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="iframe"><i class="icon-line-play"></i></a>
+          {%endif%}
+          {%if post.images | length > 1%}
+          {%for image in post.images%}
+          {%if loop.index == 1%}
+          <a href="{{config['UPLOAD_FOLDER']}}/{{image.file_name}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="gallery-item"><i class="icon-line-stack-2"></i></a>
+          {%else%}
+          <a href="{{config['UPLOAD_FOLDER']}}/{{image.file_name}}" class="d-none" data-lightbox="gallery-item"></a>
+          {%endif%}
+          {%endfor%}
+          {%else%}
+          {%if post.images%}
+          <a href="{{config['UPLOAD_FOLDER']}}/{{post.images[0].file_name}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>
+          {%endif%}
+          {%endif%}
+        </div>
+        <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+      </div>
+      <!-- Overlay: End -->
+    </div>
+    <!-- Image: End -->
+    <!-- Decription: Start -->
+    <div class="portfolio-desc">
+      {%if post.name%}
+      <h3><a href="portfolio-single.html">{{post.name}}</a></h3>
+      {%endif%}
+      {%if post.details%}
+      <span>{{post.details}}</span>
+      {%endif%}
+    </div>
+    <!-- Description: Start -->
+  </div>
+  <!-- Grid Inner: End -->
+</article>
+<!-- Portfolio Item: End -->
+{%endfor%}
+{%if next%}
+<a href="/get_gallery_2" class="button button-dark button-rounded load-next-portfolio" style="color: #F7F7F7;">Загрузить еще...</a>
+{%endif%}

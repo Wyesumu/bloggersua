@@ -1,0 +1,63 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+<section id="page-title" class="page-title-parallax page-title-dark" style="background-image: url('/static/images/about/parallax.jpg'); padding: 120px 0;" data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
+
+	<div class="container clearfix">
+		<h1>{{gettext('Партнерство')}}</h1>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">{{gettext('Головна')}}</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{gettext('Партнерство')}}</li>
+		</ol>
+	</div>
+
+</section><!-- #page-title end -->
+<section id="content">
+			<div class="content-wrap">
+				<div class="container clearfix">
+
+					<div class="row align-items-stretch col-mb-50">
+						<div class="col-lg-6 min-vh-50">
+							
+
+							<p>
+								{{gettext('Асоціація блогерів України пропонує громадським організаціям, об’єднанням, компаніям та брендам співпрацювати на партнерських умовах. 
+								Листи з темою "Партнерство" прохання відправляти на пошту AssociateBloggersUa@gmail.com, ми дамо відповідь на протязі трьох робочих днів.')}}
+							</p>
+						</div>
+
+						<div class="col-lg-6">
+
+							<div class="row col-mb-50 mb-0">
+								<!-- Contact Info
+								============================================= -->
+								<div class="col-md-5">
+
+									<address>
+									<strong>{{gettext('Адреса:')}}</strong><br>
+										{{settings['address']}}
+									</address>
+									<abbr title="Email Address"><strong>Email:</strong></abbr> {{settings['email']}}
+
+								</div><!-- Contact Info End -->
+
+								<!-- Testimonials
+								============================================= -->
+								<div class="col-md-7">
+
+									<div class="widget pt-0 border-0">
+										<h4>Instagram</h4>
+										<div id="instagram-photos" class="instagram-photos masonry-thumbs grid-container grid-4 customjs" data-user="{{settings['instagram']}}"></div>
+									</div>
+
+								</div><!-- Testimonial End -->
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+{%endblock%}
