@@ -189,7 +189,7 @@ msgstr ""
 
 #: templates/index.html:347
 msgid "ЧЛЕНИ АСОЦІАЦІЇ БЛОГЕРІВ"
-msgstr ""
+msgstr "MEMBERS OF THE BLOGGERS ASSOCIATION"
 
 #: templates/index.html:391
 msgid "РОЗКЛАД ЗАХОДІВ"
