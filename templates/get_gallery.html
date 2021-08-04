@@ -16,11 +16,9 @@
         </div>
       </div>
       {%else%}
-      <a href="portfolio-single.html">
         {%if post.images%}
         <img src="{{config['THUMBNAIL_FOLDER']}}/{{post.images[0].file_name}}" alt="{{post.name}}">
         {%endif%}
-      </a>
       {%endif%}
       <!-- Overlay: Start -->
       <div class="bg-overlay" {%if post.images | length > 1%}data-lightbox="gallery"{%endif%}>
@@ -50,7 +48,7 @@
     <!-- Decription: Start -->
     <div class="portfolio-desc">
       {%if post.name%}
-      <h3><a href="portfolio-single.html">{{post.name}}</a></h3>
+      <h3><a href="#">{{post.name}}</a></h3>
       {%endif%}
       {%if post.details%}
       <span>{{post.details}}</span>

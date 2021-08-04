@@ -1,0 +1,73 @@
+{%extends 'layout.html'%}
+
+{%block content%}
+
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+            <div class="row align-items-stretch col-mb-50">
+                <div class="col-lg-3 postcontent">
+                <div class="team">
+                    <div class="team-image">
+                        <a href="{{config['UPLOAD_FOLDER']}}/{{member.img}}" data-lightbox="image">
+                            <img src="{{config['THUMBNAIL_FOLDER']}}/{{member.img}}" alt="{{member.name_uk}}">
+                        </a>
+                    </div>
+                    <div class="team-desc">
+                        {% if member.instagram %}
+                        <a href="{{ member.instagram }}" class="social-icon inline-block si-small si-light si-rounded si-instagram">
+                            <i class="icon-instagram"></i>
+                            <i class="icon-instagram"></i>
+                        </a>
+                        {% endif %}
+                        {% if member.youtube %}
+                        <a href="{{ member.youtube }}" class="social-icon inline-block si-small si-light si-rounded si-youtube">
+                            <i class="icon-youtube"></i>
+                            <i class="icon-youtube"></i>
+                        </a>
+                        {% endif %}
+                        {% if member.tiktok %}
+                        <a href="{{ member.tiktok }}" class="social-icon inline-block si-small si-light si-rounded si-tiktok">
+                            <i class="icon-tiktok"></i>
+                            <i class="icon-tiktok"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-9 postcontent">
+                    <div class="border-bottom" style="max-width: fit-content;">
+                        {%if locale == 'ru' %}
+                        <h2 class="font-normal mb-0">{{member.name_ru}}</h2>
+                        {%elif locale == 'en' %}
+                        <h2 class="font-normal mb-0">{{member.name_en}}</h2>
+                        {%else%}
+                        <h2 class="font-normal mb-0">{{member.name_uk}}</h2>
+                        {%endif%}
+                    </div>
+                    <p style="overflow-wrap: break-word;">
+                        {%if locale == 'ru' %}
+                            {{member.short_ru}}
+                        {%elif locale == 'en' %}
+                            {{member.short_en}}
+                        {%else%}
+                            {{member.short_uk}}
+                        {%endif%}
+                    </p>
+
+                    <p style="overflow-wrap: break-word;">
+                        {%if locale == 'ru' %}
+                            {{member.description_ru}}
+                        {%elif locale == 'en' %}
+                            {{member.description_en}}
+                        {%else%}
+                            {{member.description_uk}}
+                        {%endif%}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%endblock%}

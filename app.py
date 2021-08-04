@@ -177,6 +177,25 @@ class Employers(db.Model):
 	def __repr__(self):
 		return self.name_uk
 
+class BloggersPublic(db.Model):
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	img = db.Column(db.String(190))
+	name_uk = db.Column(db.String(190))
+	name_ru = db.Column(db.String(190))
+	name_en = db.Column(db.String(190))
+	short_uk = db.Column(db.String(190))
+	short_ru = db.Column(db.String(190))
+	short_en = db.Column(db.String(190))
+	description_uk = db.Column(db.Text)
+	description_ru = db.Column(db.Text)
+	description_en = db.Column(db.Text)
+	instagram = db.Column(db.String(190))
+	youtube = db.Column(db.String(190))
+	tiktok = db.Column(db.String(190))
+
+	def __repr__(self):
+		return self.name_uk
+
 class Request(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	name = db.Column(db.String(190))
@@ -235,8 +254,8 @@ class User(db.Model, UserMixin):
 
 	def set_password(self, password):
 		self.password = encrypt_password(password)
-
-db.create_all()
+if __name__ == "__main__":
+	db.create_all()
 
 #------------------/database classes/---------------------------
 
@@ -485,6 +504,24 @@ class BloggersViewAdmin(AdminView):
 class DefView(AdminView):
 	pass
 
+class EmpView(AdminView):
+	form_overrides = {
+		'img': ImageUploadField
+	}
+
+	column_list = ('name_uk', )
+
+	form_args = {
+		'img': {
+			'label': 'Изображение',
+			'base_path': 'static/uploads',
+			'allow_overwrite': True,
+			'namegen': prefix_name,
+			'thumbnail_size': (256,256, True),
+			'thumbgen' : thumb_name
+		}
+	}
+
 class SettingsView(AdminView):
 	form_extra_fields = {
 		'file': FileUploadField('file', base_path = os.path.dirname(os.path.abspath(__file__)) + app.config['UPLOAD_FOLDER'], namegen = prefix_name)
@@ -570,7 +607,8 @@ admin.add_view(BloggersViewUser(Blogger, db.session, 'Новый блогер', 
 admin.add_view(DefView(BlogType, db.session, 'Категории', url='/admin/bloggertypes', category='Блогеры', roles_accepted=['superuser']))
 admin.add_view(RequestView(Request, db.session, 'Заявки', url='/admin/requests', roles_accepted=['superuser']))
 admin.add_view(EventView(Event, db.session, 'События', url='/admin/events', roles_accepted=['superuser']))
-admin.add_view(DefView(Employers, db.session, 'Сотрудники', url='/admin/employers', category='Настройки', roles_accepted=['superuser']))
+admin.add_view(EmpView(Employers, db.session, 'Сотрудники', url='/admin/employers', category='Настройки', roles_accepted=['superuser']))
+admin.add_view(EmpView(BloggersPublic, db.session, 'Блогеры на главной странице', url='/admin/public_bloggers', category='Настройки', roles_accepted=['superuser']))
 admin.add_view(UserView(User, db.session, 'Пользователи', url='/admin/users', category='Настройки', roles_accepted=['superuser']))
 admin.add_view(DefView(Role, db.session, 'Роли', url='/admin/roles', category='Настройки', roles_accepted=['superuser']))
 
@@ -718,6 +756,7 @@ def index():
 				settings = get_settings(),
 				gallery = Gallery.query.order_by(Gallery.id.desc()).limit(3).all(),
 				employers = Employers.query.all(),
+				members = BloggersPublic.query.all(),
 				slider = Slider.query.all(),
 				locale=get_locale(),
 				events=Event.query.order_by(Event.id.desc()).limit(5).all())
@@ -790,6 +829,13 @@ def map():
 				settings = get_settings(),
 				locale=get_locale())
 
+@app.route("/member/<blogger_id>", methods=["GET"])
+def member(blogger_id):
+	return flask.render_template("member.html",
+				member = BloggersPublic.query.get(blogger_id),
+				settings = get_settings(),
+				locale=get_locale())
+
 @app.route("/get_gallery_<num>", methods=["GET"])
 def get_gallery(num):
 	posts = Gallery.query.order_by(Gallery.id.desc()).limit(3*int(num)).all()
@@ -810,10 +856,10 @@ def get_gallery(num):
 		if len(post.images) > 1:
 			result +='<div class="fslider" data-arrows="false" data-speed="400" data-pause="4000"><div class="flexslider"><div class="slider-wrap">'
 			for image in post.images:
-				result += '<div class="slide"><a href="portfolio-single-gallery.html"><img src="'+app.config['THUMBNAIL_FOLDER']+'/'+image.file_name+'" alt="'+post.name+'"></a></div>'
+				result += '<div class="slide"><a href="#"><img src="'+app.config['THUMBNAIL_FOLDER']+'/'+image.file_name+'" alt="'+post.name+'"></a></div>'
 			result +='</div></div></div>'
 		else:
-			result += '<a href="portfolio-single.html">'
+			result += '<a href="#">'
 			if post.images:
 				result +='<img src="'+app.config['THUMBNAIL_FOLDER']+'/'+post.images[0].file_name+'" alt="'+post.name+'">'
 			result +='</a>'
@@ -832,13 +878,13 @@ def get_gallery(num):
 		else:
 			if post.images:
 				result += '<a href="'+app.config['UPLOAD_FOLDER']+'/'+post.images[0].file_name+'" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-lightbox="image" title="Image"><i class="icon-line-plus"></i></a>'
-		result += '''<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350"><i class="icon-line-ellipsis"></i></a>
+		result += '''
 		</div>
 		<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
 		</div>
 		</div>
 		<div class="portfolio-desc">
-		<h3><a href="portfolio-single.html">'''+post.name+'''</a></h3>'''
+		<h3><a href="#">'''+post.name+'''</a></h3>'''
 		if post.details:
 			result +='<span>'+post.details+'</span>'
 		result +='</div></div></article>'

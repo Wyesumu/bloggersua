@@ -1,36 +1,33 @@
+
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-11-09 08:28+0300\n"
+"POT-Creation-Date: 2021-08-03 20:58+0700\n"
 "PO-Revision-Date: 2021-07-04 09:25+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Ukrainian\n"
 "Language: uk\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
-"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"Language-Team: Ukrainian\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 &&"
+" n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Loco-Source-Locale: en_RU\n"
 "Generated-By: Babel 2.8.0\n"
-"\n"
-"X-Loco-Parser: loco_parse_po\n"
-"X-Generator: Loco https://localise.biz/"
 
-#: app.py:741 app.py:748 app.py:755
+#: app.py:780 app.py:787 app.py:794
 msgid "Не приложены необходимые документы"
 msgstr "The necessary documents are not attached"
 
-#: app.py:773
+#: app.py:812
 msgid "Что-то пошло не так, попробуйте снова позже"
 msgstr "Something went wrong, try again later"
 
-#: app.py:776
+#: app.py:815
 msgid "Заявка успешно отправлена"
 msgstr "The request was sent successfully"
 
-#: templates/event.html:9 templates/join.html:11 templates/layout.html:51 
+#: templates/event.html:9 templates/join.html:10 templates/layout.html:51
 #: templates/layout.html:147 templates/partners.html:9
 msgid "Головна"
 msgstr "Home"
@@ -55,218 +52,229 @@ msgstr "Information about the event"
 msgid "Опис"
 msgstr "Description"
 
-#: templates/index.html:201
+#: templates/index.html:213
 msgid "ПРО АСОЦІАЦІЮ"
 msgstr "ABOUT THE ASSOCIATION"
 
-#: templates/index.html:215
+#: templates/index.html:229
 msgid "Про Асоціацію"
 msgstr "About the Association"
 
-#: templates/index.html:218
+#: templates/index.html:232
 msgid ""
 "Асоціація блогерів України створена в 2020 році групою блогерів з метою "
 "представлення та захисту блогерської спільноти."
 msgstr ""
-"The Association of Bloggers of Ukraine was established in 2020 by a group of "
-"bloggers to represent and protect the blogging community."
+"The Association of Bloggers of Ukraine was established in 2020 by a group"
+" of bloggers to represent and protect the blogging community."
 
-#: templates/index.html:221
+#: templates/index.html:235
 msgid ""
 "Ми об'єднуємо блогерів, які поділяють цінності і цілі асоціації, готові "
-"нести відповідальність за власний контент і хочуть впливати на інформаційний "
-"простір, частиною якого вони є.\n"
-"\t\t\t\t\t\t\tАсоціація проводить навчання блогерів, забезпечує можливості "
-"для ділового спілкування, пошуку партнерів та взаємодії з аудиторією та "
-"рекламодавцями."
+"нести відповідальність за власний контент і хочуть впливати на "
+"інформаційний простір, частиною якого вони є.\n"
+"\t\t\t\t\t\t\tАсоціація проводить навчання блогерів, забезпечує "
+"можливості для ділового спілкування, пошуку партнерів та взаємодії з "
+"аудиторією та рекламодавцями."
 msgstr ""
-"We bring together bloggers who share the values and goals of the association,"
-" are willing to take responsibility for their own content and want to "
-"influence the information space of which they are a part.\n"
+"We bring together bloggers who share the values and goals of the "
+"association, are willing to take responsibility for their own content and"
+" want to influence the information space of which they are a part.\n"
 "The association trains bloggers, provides opportunities for business "
-"communication, partner search and interaction with audiences and advertisers."
+"communication, partner search and interaction with audiences and "
+"advertisers."
 
-#: templates/index.html:230
+#: templates/index.html:244
 msgid "Мета"
 msgstr "Goal"
 
-#: templates/index.html:233
+#: templates/index.html:247
 msgid ""
 "1.  Розвиток і просування блогерської діяльності в Україні.<br>\n"
-"\t\t\t\t\t\t\t\t\t\t2.  Проведення навчальних онлайн і офлайн заходів для "
-"блогерів.<br>\n"
+"\t\t\t\t\t\t\t\t\t\t2.  Проведення навчальних онлайн і офлайн заходів для"
+" блогерів.<br>\n"
 "\t\t\t\t\t\t\t\t\t\t3.  Представлення консолідованої позиції блогерского "
 "спільноти перед суспільством і органами державної влади.<br>\n"
 "\t\t\t\t\t\t\t\t\t\t4.  Розробка спільних рішень з питань блогерської "
 "діяльності.<br>\n"
-"\t\t\t\t\t\t\t\t\t\t5.  Вдосконалення законодавства, що регулює діяльність "
-"блогерів.<br>\n"
+"\t\t\t\t\t\t\t\t\t\t5.  Вдосконалення законодавства, що регулює "
+"діяльність блогерів.<br>\n"
 "\t\t\t\t\t\t\t\t\t\t6.  Захист професійних інтересів блогерів перед "
 "рекламодавцями і недобросовісними блогерами.<br>\n"
-"\t\t\t\t\t\t\t\t\t\t7.  Регламентування рекламної діяльності блогерів.<br>\n"
+"\t\t\t\t\t\t\t\t\t\t7.  Регламентування рекламної діяльності "
+"блогерів.<br>\n"
 "\t\t\t\t\t\t\t\t\t\t8.  Здійснення комунікації з соціальними мережами та "
-"платформами, на яких розміщені блоги, від імені Асоціації та її членів.<br>\n"
-"\t\t\t\t\t\t\t\t\t\t9.  Представлення та захист спільних інтересів членів "
-"Асоціації;<br>"
+"платформами, на яких розміщені блоги, від імені Асоціації та її "
+"членів.<br>\n"
+"\t\t\t\t\t\t\t\t\t\t9.  Представлення та захист спільних інтересів членів"
+" Асоціації;<br>"
 msgstr ""
 "1. Development and promotion of blogging in Ukraine. <br>\n"
 "2. Conducting online and offline training events for bloggers. <br>\n"
-"3. Presentation of the consolidated position of the blogging community to "
-"society and public authorities. <br>\n"
+"3. Presentation of the consolidated position of the blogging community to"
+" society and public authorities. <br>\n"
 "4. Development of joint decisions on blogging. <br>\n"
 "5. Improving the legislation governing the activities of bloggers. <br>\n"
-"6. Protecting the professional interests of bloggers from advertisers and "
-"unscrupulous bloggers. <br>\n"
+"6. Protecting the professional interests of bloggers from advertisers and"
+" unscrupulous bloggers. <br>\n"
 "7. Regulation of advertising activities of bloggers. <br>\n"
 "8. Communication with social networks and platforms on which blogs are "
 "posted, on behalf of the Association and its members. <br>\n"
 "9. Representation and protection of common interests of members of the "
 "Association; <br>"
 
-#: templates/index.html:248
+#: templates/index.html:262
 msgid "Історія"
 msgstr "History"
 
-#: templates/index.html:251
+#: templates/index.html:265
 msgid ""
 "На сьогодні, Асоціація блогерів України - це об'єднання блогерів, які з "
 "ентузіазмом сприймають ідею створення такої асоціації.\n"
-"\t\t\t\t\t\t\tАсоціація блогерів України об'єднує блогерів з різних сфер. Це "
-"політика, наука, мистецтво та бізнес. Важливе місце в Асоціації блогерів "
-"України відводиться благодійності. Асоціація блогерів України підтримує "
-"соціальні проекти та акції, покликані до благодійності і допомоги нужденним."
+"\t\t\t\t\t\t\tАсоціація блогерів України об'єднує блогерів з різних сфер."
+" Це політика, наука, мистецтво та бізнес. Важливе місце в Асоціації "
+"блогерів України відводиться благодійності. Асоціація блогерів України "
+"підтримує соціальні проекти та акції, покликані до благодійності і "
+"допомоги нужденним."
 msgstr ""
-"Today, the Association of Bloggers of Ukraine is an association of bloggers "
-"who enthusiastically accept the idea of creating such an association.\n"
-"The Association of Bloggers of Ukraine unites bloggers from different fields."
-" These are politics, science, art and business. An important place in the "
-"Association of Bloggers of Ukraine is given to charity. The Association of "
-"Bloggers of Ukraine supports social projects and actions aimed at charity "
-"and helping the needy."
+"Today, the Association of Bloggers of Ukraine is an association of "
+"bloggers who enthusiastically accept the idea of creating such an "
+"association.\n"
+"The Association of Bloggers of Ukraine unites bloggers from different "
+"fields. These are politics, science, art and business. An important place"
+" in the Association of Bloggers of Ukraine is given to charity. The "
+"Association of Bloggers of Ukraine supports social projects and actions "
+"aimed at charity and helping the needy."
 
-#: templates/index.html:259
+#: templates/index.html:273
 msgid "Місія"
 msgstr "Mission"
 
-#: templates/index.html:262
+#: templates/index.html:276
 msgid ""
-"Наша місія - об'єднання блогерів в єдиний міцний союз, що дозволить виявляти,"
-" аналізувати, систематизувати і зберігати цінні думки, концептуальні ідеї і "
-"різноманітні позитивні новації. Таким чином, ми створимо загальнодоступний "
-"банк даних, що включає авторство, а також стимулюємо творчий процес в "
-"українському комунікаційному просторі."
+"Наша місія - об'єднання блогерів в єдиний міцний союз, що дозволить "
+"виявляти, аналізувати, систематизувати і зберігати цінні думки, "
+"концептуальні ідеї і різноманітні позитивні новації. Таким чином, ми "
+"створимо загальнодоступний банк даних, що включає авторство, а також "
+"стимулюємо творчий процес в українському комунікаційному просторі."
 msgstr ""
 "Our mission is to unite bloggers into a single strong alliance that will "
-"identify, analyze, systematize and store valuable ideas, conceptual ideas "
-"and a variety of positive innovations. Thus, we will create a public "
-"database that includes authorship, as well as stimulate the creative process "
-"in the Ukrainian communication space."
+"identify, analyze, systematize and store valuable ideas, conceptual ideas"
+" and a variety of positive innovations. Thus, we will create a public "
+"database that includes authorship, as well as stimulate the creative "
+"process in the Ukrainian communication space."
 
-#: templates/index.html:273
+#: templates/index.html:287
 msgid "ОРГАНИ УПРАВЛІННЯ"
 msgstr "GOVERNING BODIES"
 
-#: templates/index.html:320
+#: templates/index.html:334
 msgid ""
 "Органами управління Ассоціації блогерів України є Загальні збори членів "
 "Ассоціації, Правління Ассоціації та Голова.\n"
-"\t\t\t\t\t\t\t\tМи раді представити Вам нашу команду:\n"
-"\t\t\t\t\t\t\t\tГолова Асоціації -  Галущак Евген Володимирович\n"
-"\t\t\t\t\t\t\t\tСекретар Асоціації  - Сурков Віталій Константинович\n"
-"\t\t\t\t\t\t\t\tЧлени правління Єнько Марина Валеріївна, Рисак Марія "
-"Ігорівна\n"
-"\t\t\t\t\t\t\t\tМадяр Анастасія Василівна - Головний юрист\n"
-"\t\t\t\t\t\t\t\tІванова Анна Олегівна - юрист"
+"\t\t\t\t\t\t\tМи раді представити Вам нашу команду:\n"
+"\t\t\t\t\t\t\tГолова Асоціації -  Галущак Евген Володимирович\n"
+"\t\t\t\t\t\t\tСекретар Асоціації  - Сурков Віталій Константинович\n"
+"\t\t\t\t\t\t\tМадяр Анастасія Василівна - Головний юрист"
 msgstr ""
 "The governing bodies of the Association of Bloggers of Ukraine are the "
-"General Meeting of Members of the Association, the Board of the Association "
-"and the Chairman.\n"
-"We are glad to present you our team:\n"
-"Chairman of the Association - Galushchak Eugene Vladimirovich\n"
-"Secretary of the Association - Surkov Vitaly Konstantinovich\n"
-"Board members Yenko Marina Valeriyivna, Rysak Maria Ihorivna\n"
-"Madyar Anastasia Vasylivna - Chief Lawyer\n"
-"Ivanova Anna Olehivna - lawyer"
+"General Meeting of MembersAssociations, Association Board and Chairman."
+" \n"
+"\t\t\t\t\t\t\tWe are pleased to introduce our team: \n"
+"\t\t\t\t\t\t\tChairman of the Association - Galushchak Eugene "
+"Vladimirovich \n"
+"\t\t\t\t\t\t\tSecretary of the Association - Surkov Vitaly "
+"Konstantinovich \n"
+"\t\t\t\t\t\t\tMadyar Anastasia Vasylivna - Chief Lawyer"
 
-#: templates/index.html:342
+#: templates/index.html:347
+msgid "ЧЛЕНИ АСОЦІАЦІЇ БЛОГЕРІВ"
+msgstr ""
+
+#: templates/index.html:391
 msgid "РОЗКЛАД ЗАХОДІВ"
 msgstr "SCHEDULE OF EVENTS"
 
-#: templates/index.html:373
+#: templates/index.html:422
 msgid "Читати далі"
 msgstr "Read more"
 
-#: templates/index.html:388
+#: templates/index.html:437
 msgid "АФІША ЗАХОДІВ"
 msgstr "POSTER OF EVENTS"
 
-#: templates/index.html:521
+#: templates/index.html:558
 msgid "БІЛЬШЕ..."
 msgstr "MORE..."
 
-#: templates/join.html:8 templates/join.html:12 templates/layout.html:57 
+#: templates/join.html:7 templates/join.html:11 templates/layout.html:57
 #: templates/layout.html:149
 msgid "Вступити до асоціації"
 msgstr "Join the association"
 
-#: templates/join.html:9
+#: templates/join.html:8
 msgid "Станьте частиною спільноти"
 msgstr "Become part of the community"
 
-#: templates/join.html:25
+#: templates/join.html:23
 msgid ""
 "Членами Асоціації можуть бути громадяни України, іноземці та особи без "
-"громадянства, які перебувають в Україні на законних підставах, які досягли "
-"14 років і які визнають  Статут Асоціації та сприяють діяльності, що "
-"спрямована на досягнення мети і завдань Асоціації.\n"
+"громадянства, які перебувають в Україні на законних підставах, які "
+"досягли 14 років і які визнають  Статут Асоціації та сприяють діяльності,"
+" що спрямована на досягнення мети і завдань Асоціації.\n"
 "\t\t\t\t\t\tГолова Правління приймає рішення про прийом або відмову у "
 "прийомі до Асоціації протягом місяця з дати подання заяви до Асоціації.\n"
 "\t\t\t\t\t\tДля  вступу до Асоціації необхідно заповнити форму нижче та "
-"прикріпити до неї сканкопию <a href='/static/uploads/zayava.pdf'>заяви</a>.\n"
-"\t\t\t\t\t\tПісля підтвердження членства оригінал заяви необхідно відправити "
-"поштою. Інформація щодо адреси буде надана Вам у листі-підтвердженні."
+"прикріпити до неї сканкопию <a "
+"href='/static/uploads/zayava.pdf'>заяви</a>.\n"
+"\t\t\t\t\t\tПісля підтвердження членства оригінал заяви необхідно "
+"відправити поштою. Інформація щодо адреси буде надана Вам у "
+"листі-підтвердженні."
 msgstr ""
 "Members of the Association may be citizens of Ukraine, foreigners and "
-"stateless persons who are in Ukraine legally, who have reached 14 years of "
-"age and who recognize the Charter of the Association and promote activities "
-"aimed at achieving the goals and objectives of the Association.\n"
-"The Chairman of the Board decides on admission or refusal of admission to "
-"the Association within one month from the date of submission of the "
+"stateless persons who are in Ukraine legally, who have reached 14 years "
+"of age and who recognize the Charter of the Association and promote "
+"activities aimed at achieving the goals and objectives of the "
+"Association.\n"
+"The Chairman of the Board decides on admission or refusal of admission to"
+" the Association within one month from the date of submission of the "
 "application to the Association.\n"
-"To join the Association, you need to fill out the form below and attach a "
-"scanned copy of the <a href='/static/uploads/zayava.pdf'> application </a>.\n"
-"After confirmation of membership, the original application must be sent by "
-"mail. Address information will be provided to you in a confirmation letter."
+"To join the Association, you need to fill out the form below and attach a"
+" scanned copy of the <a href='/static/uploads/zayava.pdf'> application "
+"</a>.\n"
+"After confirmation of membership, the original application must be sent "
+"by mail. Address information will be provided to you in a confirmation "
+"letter."
 
-#: templates/join.html:38
+#: templates/join.html:36
 msgid "Ім'я"
 msgstr "Name"
 
-#: templates/join.html:42
+#: templates/join.html:40
 msgid "Прізвище"
 msgstr "Name"
 
-#: templates/join.html:47
+#: templates/join.html:45
 msgid "Посилання на блог"
 msgstr "Blog link"
 
-#: templates/join.html:51
+#: templates/join.html:49
 msgid "Місто"
 msgstr "City"
 
-#: templates/join.html:55
+#: templates/join.html:53
 msgid "Телефон"
 msgstr "Phone"
 
-#: templates/join.html:66
+#: templates/join.html:64
 msgid "Докласти фото"
 msgstr "Attach a photo"
 
-#: templates/join.html:72
+#: templates/join.html:70
 msgid "Докласти скан-копію заяви"
 msgstr "Attach a scanned copy of the application"
 
-#: templates/join.html:76
+#: templates/join.html:74
 msgid "Надіслати"
 msgstr "Send"
 
@@ -285,7 +293,8 @@ msgstr "Register of bloggers"
 #: templates/layout.html:125
 msgid "<p>Об'єднуємо блогерів в <strong>єдиний міцний</strong> союз</p>"
 msgstr ""
-"<p> We unite bloggers into a <strong> single strong </strong> alliance </p>"
+"<p> We unite bloggers into a <strong> single strong </strong> alliance "
+"</p>"
 
 #: templates/layout.html:133 templates/partners.html:37
 msgid "Адреса:"
@@ -300,8 +309,8 @@ msgid ""
 "<strong> Підпишіться </strong> на нашу розсилку, щоб отримувати важливі "
 "новини, цікаві пропозиції та корисні новини"
 msgstr ""
-"<strong> Subscribe </strong> to our newsletter to receive important news, "
-"interesting offers and useful news"
+"<strong> Subscribe </strong> to our newsletter to receive important news,"
+" interesting offers and useful news"
 
 #: templates/layout.html:176
 msgid "Підписатися"
@@ -325,13 +334,40 @@ msgstr "Partnership"
 
 #: templates/partners.html:24
 msgid ""
-"Асоціація блогерів України пропонує громадським організаціям, об’єднанням, "
-"компаніям та брендам співпрацювати на партнерських умовах. \n"
-"\t\t\t\t\t\t\t\tЛисти з темою \"Партнерство\" прохання відправляти на пошту "
-"AssociateBloggersUa@gmail.com, ми дамо відповідь на протязі трьох робочих "
-"днів."
+"Асоціація блогерів України пропонує громадським організаціям, "
+"об’єднанням, компаніям та брендам співпрацювати на партнерських умовах."
+" \n"
+"\t\t\t\t\t\t\t\tЛисти з темою \"Партнерство\" прохання відправляти на "
+"пошту AssociateBloggersUa@gmail.com, ми дамо відповідь на протязі трьох "
+"робочих днів."
 msgstr ""
 "The Association of Bloggers of Ukraine invites public organizations, "
 "associations, companies and brands to cooperate on a partnership basis.\n"
 "Letters with the subject \"Partnership\" request to send to "
 "AssociateBloggersUa@gmail.com, we will respond within three working days."
+
+#~ msgid ""
+#~ "Органами управління Ассоціації блогерів "
+#~ "України є Загальні збори членів "
+#~ "Ассоціації, Правління Ассоціації та Голова."
+#~ "\n"
+#~ "\t\t\t\t\t\t\t\tМи раді представити Вам нашу команду:\n"
+#~ "\t\t\t\t\t\t\t\tГолова Асоціації -  Галущак Евген Володимирович\n"
+#~ "\t\t\t\t\t\t\t\tСекретар Асоціації  - Сурков Віталій Константинович\n"
+#~ "\t\t\t\t\t\t\t\tЧлени правління Єнько Марина"
+#~ " Валеріївна, Рисак Марія Ігорівна\n"
+#~ "\t\t\t\t\t\t\t\tМадяр Анастасія Василівна - Головний юрист\n"
+#~ "\t\t\t\t\t\t\t\tІванова Анна Олегівна - юрист"
+#~ msgstr ""
+#~ "The governing bodies of the Association"
+#~ " of Bloggers of Ukraine are the "
+#~ "General Meeting of Members of the "
+#~ "Association, the Board of the "
+#~ "Association and the Chairman.\n"
+#~ "We are glad to present you our team:\n"
+#~ "Chairman of the Association - Galushchak Eugene Vladimirovich\n"
+#~ "Secretary of the Association - Surkov Vitaly Konstantinovich\n"
+#~ "Board members Yenko Marina Valeriyivna, Rysak Maria Ihorivna\n"
+#~ "Madyar Anastasia Vasylivna - Chief Lawyer\n"
+#~ "Ivanova Anna Olehivna - lawyer"
+
